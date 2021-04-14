@@ -1,6 +1,7 @@
 <template>
   <section class="masthead">
     <h1>{{ tagline }}</h1>
+    <h2>{{ company }}</h2>
   </section>
 </template>
 
@@ -8,9 +9,10 @@
 export default {
   data() {
     return {
-      tagline: "Headless WordPress with the JAMstack"
+      tagline: "Headless WordPress with the JAMstack",
+      company: "Atelier",
     };
-  }
+  },
 };
 </script>
 
@@ -41,12 +43,7 @@ section.masthead {
       rgba(0, 0, 0, 0.65) 100%
     ),
     url("/mountains-masthead.jpg") no-repeat center center scroll; /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0) 37%,
-      rgba(0, 0, 0, 0.65) 100%
-    ),
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 37%, rgba(0, 0, 0, 0.65) 100%),
     url("/mountains-masthead.jpg") no-repeat center center scroll; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   background-size: cover;
   color: #333;
