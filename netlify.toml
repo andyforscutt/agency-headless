@@ -1,5 +1,12 @@
-[build]
-  publish = "dist"
-  command = "yarn run generate"
-[build.environment]
-  NODE_VERSION = "11"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer"
+    X-Content-Type-Options = "nosniff"
+
+    # Multi-value headers are expressed with multi-line strings.
+	cache-control = '''
+	max-age=365000000,
+	immutable'''
