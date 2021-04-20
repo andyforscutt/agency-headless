@@ -25,6 +25,7 @@ section.masthead {
   text-align: center;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   padding: 7vw;
   background: -moz-radial-gradient(
@@ -34,7 +35,7 @@ section.masthead {
       rgba(0, 0, 0, 0) 37%,
       rgba(0, 0, 0, 0.65) 100%
     ),
-    url("/mountains-masthead.jpg") no-repeat center center scroll; /* FF3.6-15 */
+    url("/bg.svg") no-repeat center center scroll; /* FF3.6-15 */
   background: -webkit-radial-gradient(
       center,
       ellipse cover,
@@ -42,12 +43,15 @@ section.masthead {
       rgba(0, 0, 0, 0) 37%,
       rgba(0, 0, 0, 0.65) 100%
     ),
-    url("/mountains-masthead.jpg") no-repeat center center scroll; /* Chrome10-25,Safari5.1-6 */
+    url("/bg.svg") no-repeat center center scroll; /* Chrome10-25,Safari5.1-6 */
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 37%, rgba(0, 0, 0, 0.65) 100%),
-    url("/mountains-masthead.jpg") no-repeat center center scroll; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    url("/bg.svg") no-repeat center center scroll; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
   color: #333;
-  h1 {
+  h1,
+  h2 {
     color: white;
     @include fluid-type(font-size, 320px, 1366px, 30px, 65px);
   }

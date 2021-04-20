@@ -3,51 +3,33 @@
     <app-masthead></app-masthead>
     <div class="posts">
       <main>
-        <div class="post" v-for="post in sortedPosts" :key="post.id">
-          <h3>
-            <a :href="`blog/${post.slug}`" v-html="post.title.rendered">{{
-              post.title.rendered
-            }}</a>
-          </h3>
-          <small>{{ post.date | dateformat }}</small>
-          <div v-html="post.excerpt.rendered"></div>
-          <a :href="`blog/${post.slug}`" class="readmore slide">Read more ⟶</a>
+        <div class="blog" v-for="post in sortedPosts" :key="post.id">
+          <div class="img">
+            <img
+              class="post-thumb"
+              :src="post._embedded['wp:featuredmedia']['0'].source_url"
+              width="100%"
+              :alt="post.title.rendered"
+            />
+          </div>
+
+          <div class="blog-name">
+            <h3>
+              <a :href="`blog/${post.slug}`" v-html="post.title.rendered">{{ post.title.rendered }}</a>
+            </h3>
+
+            <div class="details">
+              <div v-html="post.excerpt.rendered"></div>
+
+              <p class="date">
+                <small>{{ post.date | dateformat }}</small>
+              </p>
+
+              <a :href="`blog/${post.slug}`" class="readmore slide">Read more ⟶</a>
+            </div>
+          </div>
         </div>
       </main>
-
-      <aside>
-        <h2 class="tags-title">Categories</h2>
-        <div class="tags-list">
-          <ul>
-            <li
-              @click="updateCat(cat)"
-              v-for="cat in cats"
-              :key="cat.id"
-              :class="[cat.id === selectedCat ? activeClass : '']"
-            >
-              <a>{{ cat.name }}</a>
-              <span v-if="cat.id === selectedCat">✕</span>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <aside>
-        <h2 class="tags-title">Tags</h2>
-        <div class="tags-list">
-          <ul>
-            <li
-              @click="updateTag(tag)"
-              v-for="tag in tags"
-              :key="tag.id"
-              :class="[tag.id === selectedTag ? activeClass : '']"
-            >
-              <a>{{ tag.name }}</a>
-              <span v-if="tag.id === selectedTag">✕</span>
-            </li>
-          </ul>
-        </div>
-      </aside>
     </div>
   </div>
 </template>
@@ -57,13 +39,13 @@ import AppMasthead from "@/components/AppMasthead.vue";
 
 export default {
   components: {
-    AppMasthead
+    AppMasthead,
   },
   data() {
     return {
       selectedTag: null,
       selectedCat: null,
-      activeClass: "active"
+      activeClass: "active",
     };
   },
   computed: {
@@ -82,8 +64,8 @@ export default {
     // }
     sortedPosts() {
       if (!this.selectedCat) return this.posts;
-      return this.posts.filter(el => el.cats.includes(this.selectedCat));
-    }
+      return this.posts.filter((el) => el.cats.includes(this.selectedCat));
+    },
   },
   created() {
     this.$store.dispatch("getPosts");
@@ -104,12 +86,57 @@ export default {
       } else {
         this.selectedCat = null;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss">
+.blog {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 7px 29px 0px rgba(69, 69, 69, 0.3);
+  margin: 30px;
+
+  @media (min-width: 1600px) {
+    flex-direction: row;
+  }
+}
+
+p {
+  font-size: 17px;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+
+  @media (min-width: 1600px) {
+    width: 50%;
+  }
+}
+
+.blog-name {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  padding: 15px 30px;
+
+  @media (min-width: 1600px) {
+    width: 50%;
+  }
+}
+
+.details {
+  width: 100%;
+}
+
 .posts {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -136,11 +163,27 @@ h2 {
   margin-bottom: 2em;
 }
 
+h3 a,
+h3 a:active,
+h3 a:visited {
+  color: #b81f5f;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    color: #1468a0;
+  }
+}
+
 a,
 a:active,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+a.excerpt-read-more {
+  display: none;
 }
 
 a.readmore {
@@ -192,24 +235,24 @@ a.readmore {
   padding-left: 0;
 }
 
-.tags-list li {
-  font-family: "Open Sans", serif;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 6px 15px;
-  margin: 0 0 10px 10px;
-  display: inline-block;
-  font-size: 0.7rem !important;
-  border: 1px solid #000;
-  transition: all 0.3s;
-  outline: none;
-  font-weight: normal;
-  cursor: pointer;
-  background: #fff;
-  a {
-    color: #000;
-  }
-}
+// .tags-list li {
+//   font-family: "Open Sans", serif;
+//   letter-spacing: 1px;
+//   text-transform: uppercase;
+//   padding: 6px 15px;
+//   margin: 0 0 10px 10px;
+//   display: inline-block;
+//   font-size: 0.7rem !important;
+//   border: 1px solid #000;
+//   transition: all 0.3s;
+//   outline: none;
+//   font-weight: normal;
+//   cursor: pointer;
+//   background: #fff;
+//   a {
+//     color: #000;
+//   }
+// }
 
 .active {
   border: 1px solid #d44119;

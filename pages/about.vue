@@ -8,12 +8,12 @@
 
     <p>
       <a href="https://nuxtjs.org/" target="_blank">Nuxt.js</a> and
-      <a href="https://vuejs.org/" target="_blank">Vue.js</a> handle the front-end, with Nuxt generating Server Side
-      Rendered (SSR) content, which is great for SEO.
+      <a href="https://vuejs.org/" target="_blank">Vue.js</a> handle the front-end, with Nuxt generating static HTML
+      pages content, which is great for performance, SEO and security.
     </p>
 
     <p>
-      You can edit your WordPress content as normal in a seperate Admin area. Posting content will trigger a rebuild of
+      You can edit your WordPress content as normal in a seperate Admin area. Posting content can trigger a rebuild of
       the static content so your Front-end is always up to date, but turbo charged for performance!
     </p>
 

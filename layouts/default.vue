@@ -10,8 +10,8 @@ import AppNav from "~/components/AppNav.vue";
 
 export default {
   components: {
-    AppNav
-  }
+    AppNav,
+  },
 };
 </script>
 
@@ -36,6 +36,7 @@ h2,
 h3 {
   font-family: "Alata", serif;
   font-weight: normal;
+  width: 100%;
 }
 
 *,
