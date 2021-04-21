@@ -18,6 +18,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: this.post.title.rendered,
+    };
+  },
   computed: {
     posts() {
       return this.$store.state.posts;

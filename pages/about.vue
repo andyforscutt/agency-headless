@@ -24,7 +24,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "About Headless WordPress",
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -44,6 +44,11 @@ export default {
   components: {
     AppMasthead,
   },
+  head() {
+    return {
+      title: "Headless WordPress Demo",
+    };
+  },
   data() {
     return {
       selectedTag: null,
