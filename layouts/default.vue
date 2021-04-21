@@ -65,7 +65,7 @@ video {
 }
 
 small {
-  color: #9d5615;
+  color: #b81f5f;
 }
 
 pre,
@@ -90,5 +90,18 @@ code {
 
 p {
   margin: 15px 0 20px;
+}
+
+a.readmore {
+  display: inline-block;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  letter-spacing: 2px;
+  position: relative;
+  color: #000;
+  font-weight: 700;
+  font-family: "Open Sans", serif;
+  border: 1px solid #ccc;
 }
 </style>

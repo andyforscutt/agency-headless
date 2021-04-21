@@ -1,10 +1,18 @@
 <template>
   <main class="post individual">
+    <div class="img">
+      <img
+        class="featured-img"
+        :src="post._embedded['wp:featuredmedia']['0'].source_url"
+        width="100%"
+        :alt="post.title.rendered"
+      />
+    </div>
     <h1 v-html="post.title.rendered">{{ post.title.rendered }}</h1>
     <small class="date">{{ post.date | dateformat }}</small>
     <section v-html="post.content.rendered"></section>
 
-    <nuxt-link to="/" class="readmore slide">⟵ Go Back</nuxt-link>
+    <nuxt-link to="/" class="readmore slide">⟵ Back</nuxt-link>
   </main>
 </template>
 
@@ -44,6 +52,10 @@ main.post {
   padding: 0 30px 70px;
 }
 
+.featured-img {
+  margin-bottom: 15px;
+}
+
 h1 {
   color: black;
   font-size: 40px;
@@ -67,20 +79,6 @@ a:visited {
 .active {
   border: 1px solid #d44119;
   background-color: #fae091 !important;
-}
-
-a.readmore {
-  display: inline-block;
-  font-size: 11px;
-  text-transform: uppercase;
-  padding: 5px 15px;
-  letter-spacing: 2px;
-  position: relative;
-  color: #000;
-  font-weight: 700;
-  font-family: "Open Sans", serif;
-  border: 1px solid #ccc;
-  background: #fff;
 }
 
 .slide {

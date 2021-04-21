@@ -1,8 +1,11 @@
 <template>
   <div>
     <app-masthead></app-masthead>
+
     <div class="posts">
       <main>
+        <h2>BLOG</h2>
+
         <div class="blog" v-for="post in sortedPosts" :key="post.id">
           <div class="img">
             <img
@@ -184,20 +187,6 @@ a:visited {
 
 a.excerpt-read-more {
   display: none;
-}
-
-a.readmore {
-  display: inline-block;
-  font-size: 11px;
-  text-transform: uppercase;
-  padding: 5px 15px;
-  letter-spacing: 2px;
-  position: relative;
-  color: #000;
-  font-weight: 700;
-  font-family: "Open Sans", serif;
-  border: 1px solid #ccc;
-  background: #fff;
 }
 
 .tags-title {
